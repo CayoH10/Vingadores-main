@@ -10,7 +10,7 @@ public class App {
         Capitulo capituloInicial = new Capitulo("Prólogo",
                 "Bem-vindo ao livro interativo dos Vingadores!" +
                         "\nVocê deseja se juntar ao Capitão América ou ao Homem de Ferro?",
-                "Capitão",
+                "Capitao",
                 "Homem de Ferro",
                 0,
                 heroi1,
@@ -18,9 +18,9 @@ public class App {
                 leitor);
 
         Capitulo capituloAC = new Capitulo("Rota do Capitão",
-                "Você se junta ao Capitão América e vai para uma batalha./n" +
-                        "Energia do " + heroi1.nome + ": " + heroi1.pv +
-                        "Você vê um helicóptero prestes a cair. O que você faz?",
+                "\nVocê se junta ao Capitão América e vai para uma batalha." +
+                        "\nEnergia do " + heroi1.nome + ": " + heroi1.pv +
+                        "\nVocê vê um helicóptero prestes a cair. O que você faz?",
                 "Salvar",
                 "Lutar",
                 100,
@@ -29,7 +29,7 @@ public class App {
                 leitor);
 
         Capitulo capituloBC = new Capitulo("Salvar helicóptero",
-                "Você salva o helicóptero e é elogiado pela equipe./n" +
+                "\nVocê salva o helicóptero e é elogiado pela equipe." +
                         "Parabéns! Você alcançou o final heroico.",
                 null,
                 null,
@@ -39,7 +39,7 @@ public class App {
                 leitor);
 
         Capitulo capituloCC = new Capitulo("Enfrentar inimigo",
-                "Você decide lutar contra o inimigo, mas é ferido gravemente./n" +
+                "\nVocê decide lutar contra o inimigo, mas é ferido gravemente." +
                         "Infelizmente, você não consegue se recuperar. Fim do livro.",
                 null,
                 null,
@@ -49,7 +49,7 @@ public class App {
                 leitor);
 
         Capitulo capituloAH = new Capitulo("Rota do Homem de Ferro",
-                "Você se junta ao Homem de Ferro e embarca em uma missão de resgate./n" +
+                "\nVocê se junta ao Homem de Ferro e embarca em uma missão de resgate." +
                         "Energia do " + heroi2.nome + ": " + heroi2.pv +
                         "Você encontra um dispositivo alienígena. O que você faz?",
                 "Analisar",
@@ -60,8 +60,8 @@ public class App {
                 leitor);
 
         Capitulo capituloBH = new Capitulo("Analisar dispositivo",
-                "Você analisa o dispositivo e descobre sua função secreta./n" +
-                        "Com essa informação, você ajuda a derrotar o vilão e salva o dia!/n" +
+                "\nVocê analisa o dispositivo e descobre sua função secreta." +
+                        "\nCom essa informação, você ajuda a derrotar o vilão e salva o dia!" +
                         "Parabéns! Você alcançou o final heróico.",
                 null,
                 null,
@@ -71,7 +71,7 @@ public class App {
                 leitor);
 
         Capitulo capituloCH = new Capitulo("Ativar dispositivo",
-                "Ao ativar o dispositivo, você acidentalmente liberta uma força maligna./n" +
+                "\nAo ativar o dispositivo, você acidentalmente liberta uma força maligna." +
                         "Infelizmente, o mundo fica em perigo e não há como consertar o erro. Fim do livro.",
                 null,
                 null,
@@ -80,41 +80,49 @@ public class App {
                 heroi2,
                 leitor);
 
+       boolean oCerto = false;
+
+       while(!oCerto){
+
         capituloInicial.mostrar();
-        capituloInicial.escolher();
+        int passagem = capituloInicial.escolher();
 
-        if (capituloInicial.escolha1.equalsIgnoreCase("Capitao")) {
-            capituloBC.mostrar();
-            
-            // Desenvolvimento da escolha 1
-            System.out.println();
-            String escolha2 = leitor.nextLine();
-
-            if (capituloAC.escolha1.equalsIgnoreCase("Salvar")) {
-
-                // Desenvolvimento da escolha 2 (a)
-
-            } else if (capituloBC.escolha2.equalsIgnoreCase("Lutar")) {
-                // Desenvolvimento da escolha 2 (b)
-
-            } else {
-            }
-        } else if (capituloInicial.escolha2.equalsIgnoreCase("Homem de Ferro")) {
-
-            // Desenvolvimento da escolha 1
-            String escolha2 = leitor.nextLine();
-
-            if (capituloAH.escolha1.equalsIgnoreCase("Analisar")) {
-                // Desenvolvimento da escolha 2 (c)
-
-            } else if (capituloAH.escolha2.equalsIgnoreCase("Ativar")) {
-                // Desenvolvimento da escolha 2 (d)
-
-            } else {
-                System.out.println("Opção inválida. Fim do livro.");
-            }
-        } else {
-            System.out.println("Opção inválida. Fim do livro.");
+        if(passagem == 1){
+              while(!oCerto){
+                oCerto = true;
+                capituloAC.mostrar();
+                int passagem1 = capituloAC.escolher();
+                if(passagem1 == 1){
+                        capituloBC.mostrar();
+                }else if(passagem1 == 2){
+                        capituloCC.mostrar();
+                }else{
+                        System.out.println("Error!");
+                        oCerto = false;
+                }
+              }
+        }else if(passagem == 2){
+           while(!oCerto){
+                oCerto = true;
+                capituloAH.mostrar();
+                int passagem2 = capituloAH.escolher();
+                if(passagem2 == 1){
+                        capituloBH.mostrar();
+                }else if(passagem2 == 2){
+                        capituloCH.mostrar();
+                }else{
+                        System.out.println("Error!");
+                        oCerto = false;
+                }
+           }
+        }else{
+                System.out.println("Error!");
+                oCerto = false;
         }
+       }
+                
+
     }
+
+       
 }

@@ -29,17 +29,19 @@ public class Capitulo {
         System.out.println("2- "+ this.escolha2);
     }
     
-    String escolher() {
-        Scanner sc = new Scanner(System.in);
-        String valor = leitor.nextLine(); 
-        if(valor.equalsIgnoreCase(escolha1)) {
-         
-        } else if(valor.equalsIgnoreCase(escolha2)) {
-           
+    int escolher() {
+        leitor = new Scanner(System.in);
+        int rota = -1;
+
+        if (rota == -1) {
+            System.out.println("Qual caminho seguir ?");
+            rota = leitor.nextInt();
+            return rota;
         } else {
             System.out.println("Opção inválida");
         }
-            return valor;
+         return rota;
+            
         
     }
 
