@@ -1,49 +1,52 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Capitulo {
-    String nome;
-    String texto;
-    String escolha1;
-    String escolha2;
-    int alteracaoDePv;
-    Personagem personagem1;
-    Personagem personagem2;
-    Scanner leitor;
-    
-    Capitulo(String nome, String texto, String escolha1,
-      String escolha2, int alteracaoDePv, Personagem personagem1, Personagem personagem2, Scanner leitor) {
-         this.nome = nome;
-         this.texto = texto;
-         this.escolha1 = escolha1;
-         this.escolha2 = escolha2;
-         this.alteracaoDePv = alteracaoDePv;
-         this.personagem1 = personagem1;
-         this.personagem2 = personagem2;
-    }
-    
-    void mostrar() {
-        System.out.println("Nome: "+ this.nome);
-        System.out.println(this.texto);
-        System.out.println("Alteração de PV: "+ this.alteracaoDePv);        
-        System.out.println("1- " + this.escolha1);
-        System.out.println("2- "+ this.escolha2);
-    }
-    
-    int escolher() {
-        leitor = new Scanner(System.in);
-        int rota = -1;
+    private String nome;
+    private String texto;
+    private ArrayList<String> escolhas;
+    private int alteracaoDePv;
+    private Personagem personagem;
+    private Scanner sc;
 
-        if (rota == -1) {
-            System.out.println("Qual caminho seguir ?");
-            rota = leitor.nextInt();
-            return rota;
-        } else {
-            System.out.println("Opção inválida");
+    Capitulo(String nome, String texto,
+            int alteracaoDePv, Personagem personagem, Scanner sc) {
+        this.nome = nome;
+        this.texto = texto;
+        this.escolhas = new ArrayList<String>();
+        this.alteracaoDePv = alteracaoDePv;
+        this.personagem = personagem;
+        this.sc = sc;
+    }
+
+    void acrescentaEscolha(String escolha) {
+        this.escolhas.add(escolha);
+    }
+
+    void mostrar() {
+        System.out.println("Titulo: " + this.nome);
+        System.out.println(this.texto);
+        for (String y : this.escolhas) {
+            System.out.println(y);
         }
-         return rota;
-            
-        
+        System.out.println("Alteração de PV: " + this.alteracaoDePv);
+
+    }
+
+    public int escolher(){
+        String recebi;
+        boolean stop = true;
+
+        while(stop){
+            recebi = this.sc.nextLine();
+            for(int i = 0; i < this.escolhas.size(); i++){
+                if(this.escolhas.get(i).equalsIgnoreCase(recebi)){
+                    return i;
+                }
+            }
+            System.out.println("erro");
+        }
+        return - 1;
     }
 
 }
-    
