@@ -1,47 +1,63 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Capitulo {
+
+public class Capitulo{
     String nome;
     String texto;
-    String escolha1;
-    String escolha2;
-    int alteracaoDePv;
-    Personagem personagem1;
-    Personagem personagem2;
-    Scanner leitor;
-    
-    Capitulo(String nome, String texto, String escolha1,
-      String escolha2, int alteracaoDePv, Personagem personagem1, Personagem personagem2, Scanner leitor) {
-         this.nome = nome;
-         this.texto = texto;
-         this.escolha1 = escolha1;
-         this.escolha2 = escolha2;
-         this.alteracaoDePv = alteracaoDePv;
-         this.personagem1 = personagem1;
-         this.personagem2 = personagem2;
-    }
-    
-    void mostrar() {
-        System.out.println("Nome: "+ this.nome);
-        System.out.println(this.texto);
-        System.out.println("Alteração de PV: "+ this.alteracaoDePv);        
-        System.out.println("1- " + this.escolha1);
-        System.out.println("2- "+ this.escolha2);
-    }
-    
-    String escolher() {
-        Scanner sc = new Scanner(System.in);
-        String valor = leitor.nextLine(); 
-        if(valor.equalsIgnoreCase(escolha1)) {
-         
-        } else if(valor.equalsIgnoreCase(escolha2)) {
-           
-        } else {
-            System.out.println("Opção inválida");
-        }
-            return valor;
-        
+    ArrayList<Escolhas> escolhas;
+    int alteracaoDePV;
+    Personagem personagem;
+    Scanner sc;
+
+    Capitulo(
+        String nome,
+        String texto,
+        int alteracaoDePV,
+        Personagem personagem,
+        Scanner sc
+    ){
+        this.nome = nome;
+        this.texto = texto;
+        this.escolhas = new ArrayList<Escolhas>();
+        this.alteracaoDePV = alteracaoDePV;
+        this.personagem = personagem;
+        this.sc = sc;
     }
 
+    void acrescentaEscolha(Escolhas escolhas){
+        this.escolhas.add(escolhas);
+    }
+
+    void mostrar(){
+        System.out.println("Titulo: " + this.nome);
+        System.out.println(this.texto);
+        for(Escolhas y : this.escolhas){
+            System.out.println(y.textoMostrado);
+        }
+        System.out.println("Alteração PV: " + this.alteracaoDePV );
+    }
+
+    int escolher(){
+        String recebi;
+        boolean stop = true;
+        while(stop){
+            recebi =  this.sc.nextLine();
+            for(int i = 0; i < this.escolhas.size(); i++){
+                if(this.escolhas.get(i).textoDigitado.equalsIgnoreCase(recebi)){
+                    return i;
+                }
+            }
+            System.out.println("erro");
+        }
+        return - 1;
+    }
+
+    void executar(){
+        mostrar();
+        int m = escolher();
+        if(m >= 0){
+            this.escolhas.get(m).proximu.executar();
+        }
+    }
 }
-    
