@@ -17,21 +17,20 @@ public class Personagem {
     }
 
     void mostrarStatus(int pv) {
-        if (pv <= 0) {
+        if (pv < 0) {
             this.pv += pv;
-
-            System.out.println("O " + this.nome + " perdeu energia.");
-            System.out.println("Energia: " + this.pv);
+            System.out.println("O " + this.nome + " perdeu PV.");
+            
+            if(this.pv <= 0) {
+                System.out.println("o heroi foi de base");
+            }
 
         } else if (pv > 0) {
             this.pv += pv;
-
-            System.out.println("O " + this.nome + " ganhou energia.");
-            System.out.println("Energia: " + this.pv);
-        } else {
-            System.out.println("A Energia continua a mesma");
-            System.out.println("Energia: " + this.pv);
-        }
+            System.out.println("O " + this.nome + " ganhou PV.");
+            
+            
+        } 
 
     }
 

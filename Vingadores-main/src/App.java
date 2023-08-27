@@ -26,6 +26,7 @@ public class App {
                                                 "\nVocê deseja se juntar ao Capitão América ou ao Homem de Ferro?",
                                 0,
                                 heroi1,
+                                
                                 joaquim);
                 
                 
@@ -35,7 +36,7 @@ public class App {
                                                 "\nEnergia do " + heroi1.getNome() + ": " + heroi1.getPv() +
                                                 "\nVocê vê um helicóptero prestes a cair. O que você faz?",
 
-                                100,
+                                0,
                                 heroi1,
                                 joaquim);
                          
@@ -80,7 +81,7 @@ public class App {
 
 
                 capituloInicial.acrescentaEscolha(new Escolhas(escolhasPer[0], escolhasPer[0], capituloAC));
-                capituloInicial.acrescentaEscolha(new Escolhas(escolhasPer[0], escolhasPer[1], capituloAH));
+                capituloInicial.acrescentaEscolha(new Escolhas(escolhasPer[1], escolhasPer[1], capituloAH));
 
                 capituloAC.acrescentaEscolha(new Escolhas(escolhasCap[0], escolhasCap[0], capituloBC));
                 capituloAC.acrescentaEscolha(new Escolhas(escolhasCap[1], escolhasCap[1], capituloCC));

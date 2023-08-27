@@ -27,8 +27,10 @@ public class Capitulo {
         System.out.println("Titulo: " + this.nome);
         System.out.println(this.texto);
         for (Escolhas y : this.escolhas) {
-            System.out.println(y);
+            System.out.println(y.textoMostrado);
         }
+        personagem.mostrarStatus(alteracaoDePv);
+        System.out.println("PV: "+ personagem.getPv());
         System.out.println("Alteração de PV: " + this.alteracaoDePv);
 
     }
