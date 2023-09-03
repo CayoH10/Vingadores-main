@@ -9,8 +9,8 @@ public class App {
                 Personagem heroi2 = new Personagem("Homem de Ferro", 70);
 
                 String[] escolhasPer = new String[2];
-                escolhasPer[0] = heroi1.nome;
-                escolhasPer[1] = heroi2.nome;
+                escolhasPer[0] = heroi1.getNome();
+                escolhasPer[1] = heroi2.getNome();
 
 
                 String[] escolhasCap = new String[4];
@@ -32,7 +32,7 @@ public class App {
 
                 Capitulo capituloAC = new Capitulo("Rota do Capitão",
                                 "\nVocê se junta ao Capitão América e vai para uma batalha." +
-                                                "\nEnergia do " + heroi1.nome + ": " + heroi1.pv +
+                                                "\nEnergia do " + heroi1.getNome() + ": " + heroi1.getPv() +
                                                 "\nVocê vê um helicóptero prestes a cair. O que você faz?",
 
                                 100,
@@ -56,7 +56,7 @@ public class App {
 
                 Capitulo capituloAH = new Capitulo("Rota do Homem de Ferro",
                                 "\nVocê se junta ao Homem de Ferro e embarca em uma missão de resgate." +
-                                                "Energia do " + heroi2.nome + ": " + heroi2.pv +
+                                                "Energia do " + heroi2.getNome() + ": " + heroi2.getPv() +
                                                 "Você encontra um dispositivo alienígena. O que você faz?",
                                 0,
                                 heroi2,

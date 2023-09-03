@@ -1,10 +1,18 @@
 public class Personagem{
-    String nome;
-    int pv;
+    private String nome;
+    private int pv;
 
     Personagem (String nome, int pv){
         this.nome = nome;
         this.pv = pv;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public int getPv(){
+        return pv;
     }
 
     void mostrarStats(int pv){

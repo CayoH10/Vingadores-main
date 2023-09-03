@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 
 public class Capitulo{
-    String nome;
-    String texto;
-    ArrayList<Escolhas> escolhas;
-    int alteracaoDePV;
-    Personagem personagem;
-    Scanner sc;
+    private String nome;
+    private String texto;
+    private ArrayList<Escolhas> escolhas;
+    private int alteracaoDePV;
+    private Personagem personagem;
+    private Scanner sc;
 
     Capitulo(
         String nome,
@@ -33,7 +33,7 @@ public class Capitulo{
         System.out.println("Titulo: " + this.nome);
         System.out.println(this.texto);
         for(Escolhas y : this.escolhas){
-            System.out.println(y.textoMostrado);
+            System.out.println(y.getTextoMostrado());
         }
         System.out.println("Alteração PV: " + this.alteracaoDePV );
     }
@@ -44,7 +44,7 @@ public class Capitulo{
         while(stop){
             recebi =  this.sc.nextLine();
             for(int i = 0; i < this.escolhas.size(); i++){
-                if(this.escolhas.get(i).textoDigitado.equalsIgnoreCase(recebi)){
+                if(this.escolhas.get(i).getTextoDigitado().equalsIgnoreCase(recebi)){
                     return i;
                 }
             }
@@ -57,7 +57,7 @@ public class Capitulo{
         mostrar();
         int m = escolher();
         if(m >= 0){
-            this.escolhas.get(m).proximu.executar();
+            this.escolhas.get(m).getProximu().executar();
         }
     }
 }
