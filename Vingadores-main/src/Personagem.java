@@ -1,29 +1,36 @@
 public class Personagem {
 
-    String nome;
-    int pv;
+    private String nome;
+    private int pv;
 
     Personagem(String nome, int pv) {
         this.nome = nome;
         this.pv = pv;
     }
 
-    void mostrarStatus(int pv) {
-        if (pv <= 0) {
-            this.pv += pv;
+    public String getNome(){
+        return nome;
+    }
 
-            System.out.println("O " + this.nome + " perdeu energia.");
-            System.out.println("Energia: " + this.pv);
+    public int getPv(){
+        return pv;
+    }
+
+    void mostrarStatus(int pv) {
+        if (pv < 0) {
+            this.pv += pv;
+            System.out.println("O " + this.nome + " perdeu PV.");
+            
+            if(this.pv <= 0) {
+                System.out.println("o heroi foi de base");
+            }
 
         } else if (pv > 0) {
             this.pv += pv;
-
-            System.out.println("O " + this.nome + " ganhou energia.");
-            System.out.println("Energia: " + this.pv);
-        } else {
-            System.out.println("A Energia continua a mesma");
-            System.out.println("Energia: " + this.pv);
-        }
+            System.out.println("O " + this.nome + " ganhou PV.");
+            
+            
+        } 
 
     }
 
