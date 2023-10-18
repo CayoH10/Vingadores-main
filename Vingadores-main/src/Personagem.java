@@ -1,4 +1,7 @@
+package io.github.jiangdequan;
+
 public class Personagem {
+<<<<<<< HEAD
 
     private String nome;
     private int pv;
@@ -35,3 +38,7 @@ public class Personagem {
     }
 
 }
+=======
+    
+}
+>>>>>>> parent of 2cc490f (Personagem)
