@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Capitulo {
-     String nome;
-     String texto;
-     ArrayList<Escolhas> escolhas;
-     int alteracaoDePv;
-     Personagem personagem;
-     Scanner sc;
+     private String nome;
+     private String texto;
+     private ArrayList<Escolhas> escolhas;
+     private int alteracaoDePv;
+     private Personagem personagem;
+     private Scanner sc;
 
     Capitulo(String nome, String texto,
             int alteracaoDePv, Personagem personagem, Scanner sc) {
@@ -19,17 +19,17 @@ public class Capitulo {
         this.sc = sc;
     }
 
-    void acrescentaEscolha(Escolhas escolhas){
+    public void acrescentaEscolha(Escolhas escolhas){
         this.escolhas.add(escolhas);
     }
 
-    void mostrar() {
+    private void mostrar() {
         System.out.println("Titulo: " + this.nome);
         System.out.println(this.texto);
         for (Escolhas y : this.escolhas) {
-            System.out.println(y.textoMostrado);
+            System.out.println(y.getTextoMostrado());
         }
-        personagem.mostrarStatus(alteracaoDePv);
+        personagem.setPv(alteracaoDePv);
         System.out.println("PV: "+ personagem.getPv());
         System.out.println("Alteração de PV: " + this.alteracaoDePv);
 
@@ -42,7 +42,7 @@ public class Capitulo {
         while(stop){
             recebi = this.sc.nextLine();
             for(int i = 0; i < this.escolhas.size(); i++){
-                if(this.escolhas.get(i).textoDigitado.equalsIgnoreCase(recebi)){
+                if(this.escolhas.get(i).getTextoDigitado().equalsIgnoreCase(recebi)){
                     return i;
                 }
             }
@@ -51,11 +51,11 @@ public class Capitulo {
         return - 1;
     }
     
-    void executar() {
+    public void executar() {
         mostrar();
         int m = escolher();
         if(m >= 0) {
-            this.escolhas.get(m).proximu.executar();
+            this.escolhas.get(m).getProximu().executar();
         }
     }
 }
