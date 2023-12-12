@@ -1,0 +1,12 @@
+CAPITULO
+NOME:
+PROLOGO
+TEXTO:
+Bem-vindo ao livro interativo dos Vingadores! Você deseja se juntar ao Capitão América ou ao Homem de Ferro?
+PERSONAGEM:
+heroi1
+VARIAÇAO DE PV:
+0
+
+
+ 

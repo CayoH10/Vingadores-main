@@ -1,8 +1,9 @@
-public class Personagem{
+public class Personagem {
+
     private String nome;
     private int pv;
 
-    Personagem (String nome, int pv){
+    Personagem(String nome, int pv) {
         this.nome = nome;
         this.pv = pv;
     }
@@ -15,21 +16,27 @@ public class Personagem{
         return pv;
     }
 
-    void mostrarStats(int pv){
-        if(pv <= 0 ){
-            this.pv = pv;
+    
 
-            System.out.println("O " + this.nome + " perdeu pv");
-            System.out.println("pv: " + this.pv);
-        }else if(pv > 0){
+    public void setPv(int pv) {
+        if (pv < 0) {
             this.pv += pv;
+            System.out.println("O " + this.nome + " perdeu PV.");
+            
+            if(this.pv <= 0) {
+                System.out.println("O heroi foi de base.");
+            }
 
-            System.out.println("O " + this.nome + " ganhou pv");
-            System.out.println("pv: " + this.pv);
-        }else{
-            System.out.println("O pv continua o mesmo");
-            System.out.println("pv: " + this.pv);
+        } else if (pv > 0) {
+            this.pv += pv;
+            System.out.println("O " + this.nome + " ganhou PV.");
+            
+            
+        } 
 
-        }
     }
+
 }
+
+    
+
