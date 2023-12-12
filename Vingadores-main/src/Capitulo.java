@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Capitulo {
@@ -17,6 +18,9 @@ public class Capitulo {
         this.alteracaoDePv = alteracaoDePv;
         this.personagem = personagem;
         this.sc = sc;
+    }
+
+    public Capitulo(String nomeCapitulo, String textoCapitulo, Map<String, String> escolhasCapitulo) {
     }
 
     public void acrescentaEscolha(Escolhas escolhas){
@@ -57,5 +61,17 @@ public class Capitulo {
         if(m >= 0) {
             this.escolhas.get(m).getProximu().executar();
         }
+    }
+
+    public Map<String, String> getEscolhas() {
+        return (Map<String, String>) escolhas;
+    }
+
+    public String getNome() {
+        return null;
+    }
+
+    public String getTexto() {
+        return null;
     }
 }

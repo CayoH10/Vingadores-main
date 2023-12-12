@@ -1,0 +1,11 @@
+PERSONAGEM
+NOME
+Capitao
+PV
+100
+
+PERSONAGEM
+NOME:
+Homem de Ferro
+PV:
+70
