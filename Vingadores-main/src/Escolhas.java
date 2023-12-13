@@ -4,10 +4,9 @@ public class Escolhas {
     private Capitulo proximu;
 
     Escolhas(
-        String textoMostrado,
-        String textoDigitado,
-        Capitulo proximu
-    ){
+            String textoMostrado,
+            String textoDigitado,
+            Capitulo proximu) {
         this.textoMostrado = textoMostrado;
         this.textoDigitado = textoDigitado;
         this.proximu = proximu;
@@ -16,11 +15,12 @@ public class Escolhas {
     public String getTextoMostrado() {
         return textoMostrado;
     }
-    
+
     public String getTextoDigitado() {
         return textoDigitado;
     }
+
     public Capitulo getProximu() {
-        return proximu; 
+        return proximu;
     }
 }

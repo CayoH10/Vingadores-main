@@ -5,7 +5,7 @@ PV
 100
 
 PERSONAGEM
-NOME:
+NOME
 Homem de Ferro
 PV:
 70

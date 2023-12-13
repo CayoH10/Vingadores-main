@@ -20,8 +20,7 @@ public class Capitulo {
         this.sc = sc;
     }
 
-    public Capitulo(String nomeCapitulo, String textoCapitulo, Map<String, String> escolhasCapitulo) {
-    }
+    
 
     public void acrescentaEscolha(Escolhas escolhas){
         this.escolhas.add(escolhas);

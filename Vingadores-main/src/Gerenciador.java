@@ -35,38 +35,31 @@ public class Gerenciador {
         }
         return personagens;
     }
+
     HashMap<String, Capitulo> lerCapitulos(
-    String caminhoArquivoCapitulos, 
-    Scanner escaneador,
-    HashMap<String, Personagem> personagens) {
+            String caminhoArquivoCapitulos,
+            Scanner escaneador,
+            HashMap<String, Personagem> personagens) {
         HashMap<String, Capitulo> capitulos = new HashMap<String, Capitulo>();
         File arquivoCapitulos = new File(caminhoArquivoCapitulos);
         try {
             Scanner escaneadorArquivosCapitulos = new Scanner(arquivoCapitulos, "UTF-8");
 
-            String nomeCapitulo = "";
-            String textoCapitulo = "";
-            String nomePersonagem = "";
             String linhaEscaneada = "";
-            int variacaoPV = 0;
 
             while (escaneadorArquivosCapitulos.hasNextLine()) {
-                while (!linhaEscaneada.equals("CAPITULO")) {
+                while (!linhaEscaneada.equals("CAPITULO") &&
+                        !linhaEscaneada.equals("ESCOLHA")) {
                     linhaEscaneada = escaneadorArquivosCapitulos.nextLine();
                 }
-                linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // NOME;
-                nomeCapitulo = escaneadorArquivosCapitulos.nextLine();
-                linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // TEXTO;
-                textoCapitulo = escaneadorArquivosCapitulos.nextLine();
-                linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // PERSONAGEM;
-                nomePersonagem = escaneadorArquivosCapitulos.nextLine();
-                linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // VARIAÇÃO PV;
-                variacaoPV = Integer.parseInt(escaneadorArquivosCapitulos.nextLine());
-                capitulos.put(nomeCapitulo, new Capitulo(nomeCapitulo,
-                                                        textoCapitulo,
-                                                        variacaoPV,
-                                                        personagens.get(nomePersonagem),
-                                                        escaneador));
+                if (linhaEscaneada.equals("CAPITULO")) {
+                    linhaEscaneada = lerCapitulo(escaneador, personagens, capitulos, escaneadorArquivosCapitulos);
+                    linhaEscaneada = "";
+
+                } else if (linhaEscaneada.equals("ESCOLHA")) {
+                    linhaEscaneada = lerEscolha(capitulos, escaneadorArquivosCapitulos);
+                    linhaEscaneada = "";
+                }
 
             }
 
@@ -77,5 +70,45 @@ public class Gerenciador {
             e.printStackTrace();
         }
         return capitulos;
+    }
+
+    private String lerCapitulo(Scanner escaneador, HashMap<String, Personagem> personagens,
+            HashMap<String, Capitulo> capitulos, Scanner escaneadorArquivosCapitulos) {
+        String nomeCapitulo;
+        String textoCapitulo;
+        String nomePersonagem;
+        int variacaoPV;
+        String linhaEscaneada;
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // NOME;
+        nomeCapitulo = escaneadorArquivosCapitulos.nextLine();
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // TEXTO;
+        textoCapitulo = escaneadorArquivosCapitulos.nextLine();
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // PERSONAGEM;
+        nomePersonagem = escaneadorArquivosCapitulos.nextLine();
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // VARIAÇÃO PV;
+        variacaoPV = Integer.parseInt(escaneadorArquivosCapitulos.nextLine());
+        capitulos.put(nomeCapitulo, new Capitulo(nomeCapitulo,
+                textoCapitulo,
+                variacaoPV,
+                personagens.get(nomePersonagem),
+                escaneador));
+        return linhaEscaneada;
+    }
+
+    private String lerEscolha(HashMap<String, Capitulo> capitulos, Scanner escaneadorArquivosCapitulos) {
+        String nomeCapituloOrigem;
+        String textoEscolha;
+        String nomeCapituloDestino;
+        String linhaEscaneada;
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // CAPITULO ORIGEM;
+        nomeCapituloOrigem = escaneadorArquivosCapitulos.nextLine();
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // TEXTO;
+        textoEscolha = escaneadorArquivosCapitulos.nextLine();
+        linhaEscaneada = escaneadorArquivosCapitulos.nextLine(); // CAPITULO DESTINO;
+        nomeCapituloDestino = escaneadorArquivosCapitulos.nextLine();
+        Capitulo capituloOrigem = capitulos.get(nomeCapituloOrigem);
+        Capitulo capituloDestino = capitulos.get(nomeCapituloDestino);
+        capituloOrigem.acrescentaEscolha(new Escolhas(textoEscolha, "Capitao", capituloDestino));
+        return linhaEscaneada;
     }
 }
