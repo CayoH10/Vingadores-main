@@ -1,11 +1,9 @@
 PERSONAGEM
-NOME
 Capitao
-PV
+Capitão
 100
 
 PERSONAGEM
-NOME
 Homem de Ferro
-PV:
+Homem de Ferro
 70

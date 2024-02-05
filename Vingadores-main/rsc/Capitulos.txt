@@ -1,125 +1,71 @@
 CAPITULO
-NOME
 PROLOGO
-TEXTO
-Bem-vindo ao livro interativo dos Vingadores! Você deseja se juntar ao Capitão América ou ao Homem de Ferro?
-PERSONAGEM
+Bem-vindo ao livro interativo dos Vingadores! Voce deseja se juntar ao Capitão América ou ao Homem de Ferro?
 Capitao
-VARIAÇAO DE PV
 0
 
 CAPITULO
-NOME
-ROTA DO CAPITÃO
-TEXTO
+ROTA DO CAPITAO
 Você se junta ao Capitão América e vai para uma batalha. Você vê um helicóptero prestes a cair. O que você faz?
-PERSONAGEM
 Capitao
-VARIAÇAO DE PV
 0
 
-
 CAPITULO
-NOME
 SALVAR HELICOPTERO
-TEXTO
 Você salva o helicóptero e é elogiado pela equipe. Parabéns! Você alcançou o final heroico.
-PERSONAGEM
 Capitao
-VARIAÇAO DE PV
 -60
 
 CAPITULO
-NOME
 ENFRENTAR INIMIGO
-TEXTO
 Você decide lutar contra o inimigo, mas é ferido gravemente. Infelizmente, você não consegue se recuperar. Fim do livro.
-PERSONAGEM
 Capitao
-VARIAÇAO DE PV
 -100
 
 CAPITULO
-NOME
 ROTA DO HOMEM DE FERRO
-TEXTO
 Você se junta ao Homem de Ferro e embarca em uma missão de resgate. Você encontra um dispositivo alienígena. O que você faz?",
-PERSONAGEM
 Homem de Ferro
-VARIAÇAO DE PV
 0
-
+               
 CAPITULO
-NOME
 ANALISAR DISPOSITIVO
-TEXTO
 Você analisa o dispositivo e descobre sua função secreta. Com essa informação, você ajuda a derrotar o vilão e salva o dia! Parabéns! Você alcançou o final heróico.
-PERSONAGEM
 Homem de Ferro
-VARIAÇAO DE PV
 -20
-                        
+
 CAPITULO
-NOME
 ATIVAR DISPOSITIVO
-TEXTO
 Ao ativar o dispositivo, você acidentalmente liberta uma força maligna. Infelizmente, o mundo fica em perigo e não há como consertar o erro. Fim do livro.
-PERSONAGEM
 Homem de Ferro
-VARIAÇAO DE PV
--70                      
+-70
                         
 ESCOLHA
-CAPITULO DE ORIGEM
 PROLOGO
-TEXTO:
 Capitao
-CAPITULO DE DESTINO
-ROTA DO CAPITÃO
+ROTA DO CAPITAO
 
 ESCOLHA
-CAPITULO DE ORIGEM
+ROTA DO CAPITAO
+Salvar
+SALVAR HELICOPTERO     
+
+ESCOLHA
+ROTA DO CAPITAO
+Lutar
+ENFRENTAR INIMIGO
+
+ESCOLHA
 PROLOGO
-TEXTO:
 HOMEM DE FERRO
-CAPITULO DE DESTINO
 ROTA DO HOMEM DE FERRO
                        
 ESCOLHA
-CAPITULO DE ORIGEM
-ROTA DO CAPITÃO
-TEXTO:
-Salvar
-CAPITULO DE DESTINO
-SALVAR HELICOPTERO                        
-                        
-ESCOLHA
-CAPITULO DE ORIGEM
-ROTA DO CAPITÃO
-TEXTO:
-Lutar
-CAPITULO DE DESTINO
-ENFRENTAR INIMIGO                       
-
-ESCOLHA
-CAPITULO DE ORIGEM
 ROTA DO HOMEM DE FERRO
-TEXTO:
 Analisar
-CAPITULO DE DESTINO
 ANALISAR DISPOSITIVO
 
 ESCOLHA
-CAPITULO DE ORIGEM
 ROTA DO HOMEM DE FERRO
-TEXTO:
 Ativar
-CAPITULO DE DESTINO
-ATIVAR DISPOSITIVO
-                                
-                
-                                
-                
-                
-                
-                
+ATIVAR DISPOSITIVO                                            

@@ -1,76 +1,65 @@
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Capitulo {
-     private String nome;
-     private String texto;
-     private ArrayList<Escolhas> escolhas;
-     private int alteracaoDePv;
-     private Personagem personagem;
-     private Scanner sc;
-
-    Capitulo(String nome, String texto,
-            int alteracaoDePv, Personagem personagem, Scanner sc) {
-        this.nome = nome;
-        this.texto = texto;
-        this.escolhas = new ArrayList<Escolhas>();
-        this.alteracaoDePv = alteracaoDePv;
-        this.personagem = personagem;
-        this.sc = sc;
-    }
 
     
+    private String texto;
+    private ArrayList<Escolhas> escolhas;
+    private int alteracaoDePv;
+    private Personagem personagem;
+    private Scanner sc;
 
-    public void acrescentaEscolha(Escolhas escolhas){
-        this.escolhas.add(escolhas);
-    }
+   Capitulo(String texto,
+           int alteracaoDePv, Personagem personagem, Scanner sc) {
+       
+       this.texto = texto;
+       this.escolhas = new ArrayList<Escolhas>();
+       this.alteracaoDePv = alteracaoDePv;
+       this.personagem = personagem;
+       this.sc = sc;
+   }
 
-    private void mostrar() {
-        System.out.println("Titulo: " + this.nome);
-        System.out.println(this.texto);
-        for (Escolhas y : this.escolhas) {
-            System.out.println(y.getTextoMostrado());
-        }
-        personagem.setPv(alteracaoDePv);
-        System.out.println("PV: "+ personagem.getPv());
-        System.out.println("Alteração de PV: " + this.alteracaoDePv);
+   public void acrescentaEscolha(Escolhas escolhas){
+       this.escolhas.add(escolhas);
+   }
 
-    }
+   private void mostrar() {
+      
+       System.out.println(this.texto);
+       this.personagem.setPv(this.alteracaoDePv);
+       System.out.println("PV: "+ personagem.getPv());
+       System.out.println("Alteração de PV: " + this.alteracaoDePv);
 
-    public int escolher(){
-        String recebi;
-        boolean stop = true;
+   }
 
-        while(stop){
-            recebi = this.sc.nextLine();
-            for(int i = 0; i < this.escolhas.size(); i++){
-                if(this.escolhas.get(i).getTextoDigitado().equalsIgnoreCase(recebi)){
-                    return i;
-                }
+   public Escolhas escolher(){
+       Escolhas resultado = null;
+
+       System.out.println("Escolha: ");
+       while (resultado == null) {
+        String textoDigitado = sc.nextLine();
+        for (Escolhas escolha : escolhas) {
+            if(textoDigitado.equalsIgnoreCase(escolha.getTextoDigitado())) {
+                resultado = escolha;
             }
-            System.out.println("erro");
         }
-        return - 1;
-    }
+        if (resultado == null) {
+            System.out.println("Erro!");
+        }
+       }
+       return resultado;
+   }
+   
+   public void executar() {
+       mostrar();
+       
+       if(escolhas.size() >= 0) {
+           Escolhas escolha = escolher();
+           escolha.getProximu().executar();
+       }
+   } 
     
-    public void executar() {
-        mostrar();
-        int m = escolher();
-        if(m >= 0) {
-            this.escolhas.get(m).getProximu().executar();
-        }
-    }
-
-    public Map<String, String> getEscolhas() {
-        return (Map<String, String>) escolhas;
-    }
-
-    public String getNome() {
-        return null;
-    }
-
-    public String getTexto() {
-        return null;
-    }
 }
