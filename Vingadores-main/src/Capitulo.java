@@ -26,7 +26,7 @@ public class Capitulo {
        this.escolhas.add(escolhas);
    }
 
-   private void mostrar() {
+   protected void mostrar() {
       
        System.out.println(this.texto);
        this.personagem.setPv(this.alteracaoDePv);
@@ -59,7 +59,8 @@ public class Capitulo {
        if(escolhas.size() >= 0) {
            Escolhas escolha = escolher();
            escolha.getProximu().executar();
-       }
+        }
+       
    } 
     
 }

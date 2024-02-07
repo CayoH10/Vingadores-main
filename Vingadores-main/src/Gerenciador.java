@@ -7,7 +7,7 @@ public class Gerenciador {
 
     public static HashMap<String, Personagem> lerPersonagens() {
         HashMap<String, Personagem> personagens = new HashMap<String, Personagem>();
-        File arquivoPersonagens = new File("rsc/Personagens.txt");
+        File arquivoPersonagens = new File("Vingadores-main/rsc/Personagens.txt");
         try {
             Scanner escaneadorArquivosPersonagens = new Scanner(arquivoPersonagens);
             while (escaneadorArquivosPersonagens.hasNextLine()) {
@@ -39,7 +39,7 @@ public class Gerenciador {
     public HashMap<String, Capitulo> lerCapitulos(HashMap<String, Personagem> personagens, Scanner joaquim) {
         HashMap<String, Capitulo> capitulos = new HashMap<String, Capitulo>();
 
-        File arquivoCapitulos = new File("rsc/Capitulos.txt");
+        File arquivoCapitulos = new File("Vingadores-main/rsc/Capitulos.txt");
 
         try {
             Scanner escaneadorArquivosPersonagens = new Scanner(arquivoCapitulos);
@@ -48,6 +48,11 @@ public class Gerenciador {
                 if (linha.equalsIgnoreCase("CAPITULO")) {
                     String key = escaneadorArquivosPersonagens.nextLine();
                     Capitulo capitulo = lerCapitulo(escaneadorArquivosPersonagens, personagens, joaquim);
+                    capitulos.put(key, capitulo);
+                }
+                if (linha.equalsIgnoreCase("CAPITULO_IMAGEM")) {
+                    String key = escaneadorArquivosPersonagens.nextLine();
+                    CapituloImagem capitulo = lerCapituloImagem(escaneadorArquivosPersonagens, personagens, joaquim);
                     capitulos.put(key, capitulo);
                 }
                 if (linha.equalsIgnoreCase("ESCOLHA")) {
@@ -62,6 +67,24 @@ public class Gerenciador {
             e.printStackTrace();
         }
         return capitulos;
+    }
+
+    private CapituloImagem lerCapituloImagem(Scanner escaneadorArquivosPersonagens,
+            HashMap<String, Personagem> personagens, Scanner joaquim) {
+                String texto = escaneadorArquivosPersonagens.nextLine();
+                String keyPersonagem = escaneadorArquivosPersonagens.nextLine();
+                Personagem personagem = personagens.get(keyPersonagem);
+                int alteracaoDePv = Integer.parseInt(escaneadorArquivosPersonagens.nextLine());
+                String imagem = "";
+                String linha = escaneadorArquivosPersonagens.nextLine();
+
+                while (!linha.equalsIgnoreCase("FIM_IMAGEM")) {
+                    imagem += linha + "\n";
+                    linha = escaneadorArquivosPersonagens.nextLine();
+                }
+                CapituloImagem capitulo = new CapituloImagem(texto, imagem, alteracaoDePv, personagem, joaquim);
+                return capitulo;
+       
     }
 
     private static Capitulo lerCapitulo(Scanner escaneadorArquivosPersonagens, HashMap<String, Personagem> personagens,
