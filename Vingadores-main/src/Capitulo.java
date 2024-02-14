@@ -10,7 +10,7 @@ public class Capitulo {
     private ArrayList<Escolhas> escolhas;
     private int alteracaoDePv;
     private Personagem personagem;
-    private Scanner sc;
+    protected Scanner sc;
 
    Capitulo(String texto,
            int alteracaoDePv, Personagem personagem, Scanner sc) {
@@ -62,5 +62,13 @@ public class Capitulo {
         }
        
    } 
+
+   public String getTexto() {
+       return texto;
+   }
+
+   public ArrayList<Escolhas> getEscolhas() {
+       return escolhas;
+   }
     
 }

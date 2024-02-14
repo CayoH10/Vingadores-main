@@ -1,5 +1,4 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true,
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\supap\\OneDrive\\Documentos\\Dev\\javafx-sdk-21.0.2\\lib\\javafx.base.jar",
